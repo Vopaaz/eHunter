@@ -11,7 +11,7 @@ metadata = """\
 // @description  Modifies several default settings for https://github.com/hanFengSan/eHunter to use in incognito
 // @copyright    2023, Vopaaz
 // @license      MIT
-// @version      2.7.3.2
+// @version      2.7.3.3
 // @author       Vopaaz
 // @match        https://exhentai.org/*
 // @match        https://e-hentai.org/*
@@ -21,7 +21,7 @@ metadata = """\
 
 """
 
-full_content = metadata +original_content
+full_content = metadata + original_content
 
 with open(inject_js_path, "w") as f:
     f.write(full_content)
