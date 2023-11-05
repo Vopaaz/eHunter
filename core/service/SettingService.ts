@@ -29,7 +29,7 @@ class SettingService {
             updateTime: { val: 0 }, // the time stamp of last showing a dialog of update
             firstOpen: { val: true }, // show instructions dialog for the users of first opening the eHunter
             firstOpenBookMode: { val: true }, // show instructions dialog for the users of first opening the book mode
-            showTopBar: { eventName: 'toggleTopBar', val: true },
+            showTopBar: { eventName: 'toggleTopBar', val: false },
             isNormalMode: { val: true },
             version: { val: '' }, // for showing infos of update
             showMoreSettings: { eventName: 'toggleMoreSettings', val: false },
