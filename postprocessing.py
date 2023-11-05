@@ -11,10 +11,6 @@ metadata = """\
 // @description  Modifies several default settings for https://github.com/hanFengSan/eHunter to use in incognito
 // @copyright    2023, Vopaaz
 // @license      MIT
-// @homepageURL  https://github.com/Vopaaz/eHunter
-// @supportURL   https://github.com/Vopaaz/eHunter
-// @contributionURL   https://github.com/Vopaaz/eHunter
-// @updateURL    https://openuserjs.org/meta/Vopaaz/eHunter-vopaaz.meta.js
 // @version      2.7.3.1
 // @author       Vopaaz
 // @match        https://exhentai.org/*
