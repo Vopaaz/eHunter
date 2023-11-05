@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 dist/
+!dist/inject.js
 npm-debug.log
 test/unit/coverage
 test/e2e/reports
@@ -11,3 +12,4 @@ web-ext-artifacts
 dist.pem
 *.crx
 *.xpi
+node_modules

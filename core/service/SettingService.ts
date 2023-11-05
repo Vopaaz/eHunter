@@ -18,13 +18,13 @@ class SettingService {
             albumWidth: { eventName: 'setAlbumWidth', val: 80 }, // eventName is action name of vuex
             toggleEHunter: { val: true },
             toggleThumbView: { eventName: 'toggleThumbView', val: true },
-            loadNum: { eventName: 'setLoadNum', val: 3 },
+            loadNum: { eventName: 'setLoadNum', val: 50 },
             volumeSize: { eventName: 'setVolumeSize', val: 50 },
             showBookScreenAnimation: { eventName: 'setBookScreenAnimation', val: false },
-            showBookPagination: { eventName: 'setBookPagination', val: true },
-            readingMode: { eventName: 'setReadingMode', val: 0 },
-            bookDirection: { eventName: 'setBookDirection', val: 0 },
-            bookScreenSize: { eventName: 'setBookScreenSize', val: 2 },
+            showBookPagination: { eventName: 'setBookPagination', val: false },
+            readingMode: { eventName: 'setReadingMode', val: 1 },
+            bookDirection: { eventName: 'setBookDirection', val: 1 },
+            bookScreenSize: { eventName: 'setBookScreenSize', val: 1 },
             lang: { eventName: 'setString', val: tags.LANG_EN },
             updateTime: { val: 0 }, // the time stamp of last showing a dialog of update
             firstOpen: { val: true }, // show instructions dialog for the users of first opening the eHunter
