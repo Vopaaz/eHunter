@@ -37,8 +37,6 @@ module.exports.chrome = {
         'https://e-hentai.org/',
         'https://raw.githubusercontent.com/',
         'http://raw.githubusercontent.com/',
-        'https://jp.animesales.xyz/',
-        'http://jp.animesales.xyz/',
         'storage',
         'background',
         'notifications',
@@ -82,7 +80,6 @@ module.exports.tampermonkey =
 // @match        https://e-hentai.org/*
 // @match        https://nhentai.net/*
 // @connect      githubusercontent.com
-// @connect      jp.animesales.xyz
 // @grant        GM_xmlhttpRequest
 // @license      MIT
 // ==/UserScript==
