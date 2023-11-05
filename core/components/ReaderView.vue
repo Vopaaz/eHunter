@@ -95,7 +95,7 @@ export default {
                 case 0:
                     return `${this.curIndex.val + 1} / ${this.pageCount}`;
                 case 1:
-                    return `${this.bookIndex + 1} / 
+                    return `${this.bookIndex} / 
                     ${bookScreenCount}`;
             }
         }
