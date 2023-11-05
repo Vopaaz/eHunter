@@ -6,3 +6,4 @@ dep:
 
 build:
 	NODE_OPTIONS=--openssl-legacy-provider npm run build
+	python3 postprocessing.py
