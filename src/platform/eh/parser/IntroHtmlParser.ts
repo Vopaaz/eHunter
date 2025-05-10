@@ -22,6 +22,11 @@ export class IntroHtmlParser {
                     const thumbHeight = Number(RegExp.$2);
                     const thumbWidth = Number(RegExp.$1);
                     let pageUrl = item.getAttribute('href').match(/\/s.*$/) + '';
+
+                    const thumbStyleRegex = /background:transparent\s+url\(([^)]+)\)\s*([-0-9px\s]+)no-repeat/;
+                    const match = item.innerHTML.match(thumbStyleRegex);
+                    const thumbStyle = `background:transparent url(${match[1]}) ${match[2]} no-repeat`;
+
                     return {
                         id: pageUrl,
                         index: 0,
@@ -29,7 +34,8 @@ export class IntroHtmlParser {
                         src: '',
                         thumbHeight,
                         thumbWidth,
-                        heightOfWidth: thumbHeight / thumbWidth
+                        heightOfWidth: thumbHeight / thumbWidth,
+                        thumbStyle: thumbStyle,
                     };
                 })
             } else {
@@ -45,7 +51,8 @@ export class IntroHtmlParser {
                         src: '',
                         thumbHeight,
                         thumbWidth,
-                        heightOfWidth: thumbHeight / thumbWidth
+                        heightOfWidth: thumbHeight / thumbWidth,
+                        thumbStyle: ''
                     };
                 })
             }
@@ -59,8 +66,9 @@ export class IntroHtmlParser {
     }
 
     _getThumbKeyId() {
-        let key = this.html.querySelector('#gdt')!.children[0].innerHTML.match(/url\(https:.*?\/cm\/.*?\//g)![0]
-        key = key.replace('url(', '')
+        let url = this.html.querySelector('#gdt')!.children[0].innerHTML.match(/url\(https.*?\)/g)![0].replace('url(', '').replace(')', '')
+        let key = url.replace(url.match(/[0-9-]{3,20}\./)![0], '__PLACE_HOLDER__')
+        // console.log('key', key)
         return key
     }
 
@@ -81,7 +89,12 @@ export class IntroHtmlParser {
         let thumbKeyId = this._getThumbKeyId();
         let imgList: string[] = [];
         for (let i = 0; i < this._getThumbPageCount(sumOfPage); i++) {
-            imgList.push(`${thumbKeyId}/${albumId}-${i < 10 ? '0' + i : i}.jpg`);
+            if (thumbKeyId.includes('__PLACE_HOLDER__')) { // new
+                let url = thumbKeyId.replace('__PLACE_HOLDER__', `${albumId}-${i < 10 ? '0' + i : i}.`)
+                imgList.push(url);
+            } else {
+                imgList.push(`${thumbKeyId}/${albumId}-${i < 10 ? '0' + i : i}.jpg`);
+            }
         }
         return imgList;
     }
@@ -114,11 +127,26 @@ export class IntroHtmlParser {
                         id: imgList[i] + t,
                         src: imgList[i],
                         mode: ThumbMode.SPIRIT,
-                        offset: t * 100
+                        offset: t * 100,
+                        style: '',
+                        height: 0,
+                        width: 0,
                     })
                 }
             }
         }
         return thumbObjList;
+    }
+
+    getMaxPageNumber(): number {
+        const pageElements = this.html.querySelectorAll('body>.gtb .ptb td a');    
+        let maxPageNumber = 0;
+        pageElements.forEach(element => {
+            const pageNumber = parseInt(element.textContent!, 10);
+                if (!isNaN(pageNumber) && pageNumber > maxPageNumber) {
+                maxPageNumber = pageNumber;
+            }
+        });
+        return maxPageNumber;
     }
 }
